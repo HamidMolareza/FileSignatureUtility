@@ -18,4 +18,8 @@
       <WarningsAsErrors>CS8603</WarningsAsErrors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FunctionalUtility" Version="1.1.5" />
+  </ItemGroup>
+
 </Project>
