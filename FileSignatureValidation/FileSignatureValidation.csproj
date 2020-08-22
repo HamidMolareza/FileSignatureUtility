@@ -1,7 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+  <PackageId>FileSignatureValidation</PackageId>
+  <Version>1.0.0</Version>
+  <PackageTags>file validation; file signature; files signature validation; detect file type; detect type</PackageTags>
+  <Authors>Hamid Molareza</Authors>
+  <RepositoryUrl>https://github.com/HamidMolareza/FileSignatureValidation</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+      <Nullable>enable</Nullable>
+      <WarningsAsErrors>CS8625</WarningsAsErrors>
+      <WarningsAsErrors>CS8603</WarningsAsErrors>
   </PropertyGroup>
 
 </Project>
