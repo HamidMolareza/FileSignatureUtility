@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using FileSignatureUtility;
+using FunctionalUtility.Extensions;
 using Xunit;
 
 namespace TestFileSignatureUtility {
@@ -34,6 +35,25 @@ namespace TestFileSignatureUtility {
 
             Assert.True (methodResult.IsSuccess);
             Assert.False (methodResult.Value);
+        }
+
+        [Fact]
+        public async Task ValidateAsync_FileNameOrValidTypesAreEmpty_ReturnBadRequest () {
+            var methodResult = await _fileValidation.ValidateAsync ("", "type");
+            Assert.False (methodResult.IsSuccess);
+            Assert.True (methodResult.IsBadRequestError ());
+
+            var methodResult2 = await _fileValidation.ValidateAsync (BasePath + "image", "");
+            Assert.False (methodResult2.IsSuccess);
+            Assert.True (methodResult2.IsBadRequestError ());
+        }
+
+        [Fact]
+        public async Task ValidateAsync_FileIsNotExist_ReturnNotFound () {
+            var methodResult = await _fileValidation.ValidateAsync ("C:/Invalid_Path", "png");
+
+            Assert.False (methodResult.IsSuccess);
+            Assert.True (methodResult.IsNotFoundError ());
         }
     }
 }

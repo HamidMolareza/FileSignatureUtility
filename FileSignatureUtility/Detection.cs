@@ -73,7 +73,7 @@ namespace FileSignatureUtility {
             if (string.IsNullOrEmpty (fileName))
                 return MethodResult.Fail (new BadRequestError (message: $"{nameof(fileName)} is null or empty."));
             if (!File.Exists (fileName))
-                return MethodResult.Fail (new BadRequestError (message: $"{nameof(fileName)} is not exist."));
+                return MethodResult.Fail (new NotFoundError (message: $"{nameof(fileName)} is not exist."));
             if (validTypes.IsNullOrEmpty ())
                 return MethodResult.Fail (new BadRequestError (message: $"{nameof(validTypes)} is null or empty."));
             return MethodResult.Ok ();
