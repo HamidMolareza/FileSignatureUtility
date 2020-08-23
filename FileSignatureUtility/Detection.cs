@@ -60,10 +60,13 @@ namespace FileSignatureUtility {
         internal static string ConvertBytesToHexString (IReadOnlyCollection<byte> bytes) {
             var stringBuilder = new StringBuilder (bytes.Count * 4);
             foreach (var byteData in bytes) {
-                stringBuilder.Append (Convert.ToString (byteData, 16).PadLeft (2, '0'));
+                stringBuilder.Append (Convert.ToString (byteData, 16)
+                        .ToUpper ()
+                        .PadLeft (2, '0'))
+                    .Append (" ");
             }
 
-            return stringBuilder.ToString ();
+            return stringBuilder.ToString ().TrimEnd ();
         }
 
         private static MethodResult ValidateInputs (string fileName, params string[] validTypes) {
