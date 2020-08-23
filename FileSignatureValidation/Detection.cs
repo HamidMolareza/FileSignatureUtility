@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using FunctionalUtility.Extensions;
 using FunctionalUtility.ResultDetails.Errors;
@@ -19,38 +21,49 @@ namespace FileSignatureValidation {
             FailExtensions.FailWhen (types.IsNullOrEmpty (),
                 new BadRequestError (message: $"{nameof(types)} is null or empty."))
             .OnSuccessAsync (() => _fileSignatureValidation.GetTypesAsync (types))
+            .OnSuccessFailWhenAsync (targetTypes => targetTypes.IsNullOrEmpty (),
+                new BadRequestError (message: "Type is not correct or not supported."))
             .OnSuccessAsync (targetTypes => GetMaximumSignaturesLength (targetTypes)
                 .TryMapAsync (maxRead => ReadBytesAsync (fileStream, maxRead))
-                .OnSuccessAsync (fileSignature => DetectFileType (fileSignature, targetTypes))
+                .OnSuccessAsync (fileSignature => DetectFileType (ConvertBytesToHexString (fileSignature), targetTypes))
             );
 
         public Task<MethodResult<string?>> DetectFileTypeAsync (string fileName, params string[] types) =>
             ValidateInputs (fileName, types)
             .OnSuccessAsync (() => _fileSignatureValidation.GetTypesAsync (types))
+            .OnSuccessFailWhenAsync (targetTypes => targetTypes.IsNullOrEmpty (),
+                new BadRequestError (message: "Type is not correct or not supported."))
             .OnSuccessAsync (targetTypes => GetMaximumSignaturesLength (targetTypes)
                 .TryMapAsync (maxRead => ReadBytesAsync (fileName, maxRead))
-                .OnSuccessAsync (fileSignature => DetectFileType (fileSignature, targetTypes))
+                .OnSuccessAsync (fileSignature => DetectFileType (ConvertBytesToHexString (fileSignature), targetTypes))
             );
 
         public Task<MethodResult<string?>> DetectFileTypeAsync (Stream fileStream,
                 int maximumReadBytes = MaximumReadBytes) =>
             TryExtensions.TryAsync (() => ReadBytesAsync (fileStream, maximumReadBytes))
-            .OnSuccessAsync (bytes => _fileSignatureValidation.FindSignature (bytes));
+            .OnSuccessAsync (bytes => _fileSignatureValidation.FindSignature (ConvertBytesToHexString (bytes)));
 
         public Task<MethodResult<string?>> DetectFileTypeAsync (
                 string fileName, int maximumReadBytes = MaximumReadBytes) =>
             TryExtensions.TryAsync (() => ReadBytesAsync (fileName, maximumReadBytes))
-            .OnSuccessAsync (bytes => _fileSignatureValidation.FindSignature (bytes));
+            .OnSuccessAsync (bytes => _fileSignatureValidation.FindSignature (ConvertBytesToHexString (bytes)));
 
-        public static string? DetectFileType (byte[] fileSignature, IEnumerable<FileType> types) {
+        public static string? DetectFileType (string fileSignature, IEnumerable<FileType> types) {
             foreach (var type in types) {
-                var isEqual = fileSignature.Take (type.Signature.Length)
-                    .SequenceEqual (type.Signature);
-                if (isEqual)
+                if (fileSignature.StartsWith (type.Signature))
                     return type.TypeName;
             }
 
             return null;
+        }
+
+        internal static string ConvertBytesToHexString (IReadOnlyCollection<byte> bytes) {
+            var stringBuilder = new StringBuilder (bytes.Count * 4);
+            foreach (var byteData in bytes) {
+                stringBuilder.Append (Convert.ToString (byteData, 16).PadLeft (2, '0'));
+            }
+
+            return stringBuilder.ToString ();
         }
 
         private static MethodResult ValidateInputs (string fileName, params string[] validTypes) {
