@@ -1,4 +1,4 @@
-# FileSignatureValidation
+# FileSignatureUtility
 Validate files with binary signature.
 
 # Reference

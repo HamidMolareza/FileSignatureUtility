@@ -8,12 +8,12 @@ using FunctionalUtility.Extensions;
 using FunctionalUtility.ResultDetails.Errors;
 using FunctionalUtility.ResultUtility;
 
-namespace FileSignatureValidation {
+namespace FileSignatureUtility {
     public class Detection {
-        private readonly IFileSignatureValidation _fileSignatureValidation;
+        private readonly IFileSignature _fileSignatureValidation;
         private const int MaximumReadBytes = 50;
 
-        public Detection (IFileSignatureValidation fileSignatureValidation) {
+        public Detection (IFileSignature fileSignatureValidation) {
             _fileSignatureValidation = fileSignatureValidation;
         }
 

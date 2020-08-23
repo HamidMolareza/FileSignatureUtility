@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler", "Crawler\Crawler.csproj", "{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSignatureValidation", "FileSignatureValidation\FileSignatureValidation.csproj", "{C4A328EF-76A8-4C9B-A016-76C7C608406F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSignatureUtility", "FileSignatureUtility\FileSignatureUtility.csproj", "{C4A328EF-76A8-4C9B-A016-76C7C608406F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

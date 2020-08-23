@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-  <PackageId>FileSignatureValidation</PackageId>
-  <Version>1.0.0</Version>
+  <PackageId>FileSignatureUtility</PackageId>
+  <Version>1.0.1</Version>
   <PackageTags>file validation; file signature; files signature validation; detect file type; detect type</PackageTags>
   <Authors>Hamid Molareza</Authors>
-  <RepositoryUrl>https://github.com/HamidMolareza/FileSignatureValidation</RepositoryUrl>
+  <RepositoryUrl>https://github.com/HamidMolareza/FileSignatureUtility</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>

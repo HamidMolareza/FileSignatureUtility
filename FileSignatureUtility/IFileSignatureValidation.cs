@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FileSignatureValidation {
-    public interface IFileSignatureValidation {
+namespace FileSignatureUtility {
+    public interface IFileSignature {
         Task<List<FileType>> GetTypesAsync (params string[] targetTypes);
         Task<string?> FindSignature (string fileSignature);
     }
