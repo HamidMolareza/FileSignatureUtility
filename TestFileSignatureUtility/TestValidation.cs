@@ -1,4 +1,3 @@
-using System.IO;
 using System.Threading.Tasks;
 using FileSignatureUtility;
 using Xunit;
@@ -23,6 +22,18 @@ namespace TestFileSignatureUtility {
 
             Assert.True (methodResult.IsSuccess);
             Assert.True (methodResult.Value);
+        }
+
+        [Theory]
+        [InlineData (BasePath + "exe", "png")]
+        [InlineData (BasePath + "image", "exe")]
+        [InlineData (BasePath + "pdf", "xlsx")]
+        [InlineData (BasePath + "xlsx", "pdf")]
+        public async Task ValidateAsync_FileHasNotValidType_ReturnFalse (string fileName, string validType) {
+            var methodResult = await _fileValidation.ValidateAsync (fileName, validType);
+
+            Assert.True (methodResult.IsSuccess);
+            Assert.False (methodResult.Value);
         }
     }
 }
