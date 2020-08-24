@@ -38,12 +38,12 @@ namespace FileSignatureUtility {
                 .OnSuccessAsync (fileSignature => DetectFileType (ConvertBytesToHexString (fileSignature), targetTypes))
             );
 
-        public Task<MethodResult<string?>> DetectFileTypeAsync (Stream fileStream,
+        public Task<MethodResult<List<string>>> DetectFileTypeAsync (Stream fileStream,
                 int maximumReadBytes = MaximumReadBytes) =>
             TryExtensions.TryAsync (() => ReadBytesAsync (fileStream, maximumReadBytes))
             .OnSuccessAsync (bytes => _fileSignatureValidation.FindSignature (ConvertBytesToHexString (bytes)));
 
-        public Task<MethodResult<string?>> DetectFileTypeAsync (
+        public Task<MethodResult<List<string>>> DetectFileTypeAsync (
                 string fileName, int maximumReadBytes = MaximumReadBytes) =>
             TryExtensions.TryAsync (() => ReadBytesAsync (fileName, maximumReadBytes))
             .OnSuccessAsync (bytes => _fileSignatureValidation.FindSignature (ConvertBytesToHexString (bytes)));
