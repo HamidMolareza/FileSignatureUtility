@@ -1,11 +1,13 @@
 ﻿using System.Threading.Tasks;
 using FileSignatureUtility;
+using FileSignatureUtility.Services;
 using FunctionalUtility.Extensions;
 using Xunit;
 
 namespace TestFileSignatureUtility {
     public class TestDetection {
-        private readonly FileSignatureService _fileSignatureService = new FileSignatureService ();
+        private readonly InMemoryService _fileSignatureService = new InMemoryService (
+            @"..\..\..\..\CrawlerProgram\Data\Data.json");
         private readonly Detection _fileDetection;
         private const string BasePath = @"TestFiles\";
 

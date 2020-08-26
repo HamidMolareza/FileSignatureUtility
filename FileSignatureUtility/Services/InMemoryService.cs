@@ -4,14 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using FileSignatureUtility;
 
-namespace TestFileSignatureUtility {
-    public class FileSignatureService : IFileSignature {
+namespace FileSignatureUtility.Services {
+    public class InMemoryService : IFileSignature {
         private readonly List<TypeDataModel> _typeData;
 
-        public FileSignatureService () {
-            var jsonData = File.ReadAllText (@"..\..\..\..\CrawlerProgram\Data\Data.json");
+        public InMemoryService (string dataFileName) {
+            var jsonData = File.ReadAllText (dataFileName);
             _typeData = JsonSerializer.Deserialize<List<TypeDataModel>> (jsonData);
         }
 

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler", "Crawler\Crawler.csproj", "{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSignatureUtility", "FileSignatureUtility\FileSignatureUtility.csproj", "{C4A328EF-76A8-4C9B-A016-76C7C608406F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFileSignatureUtility", "TestFileSignatureUtility\TestFileSignatureUtility.csproj", "{DA9AE9CD-1729-4E3B-890C-93BE7563E6AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerProgram", "CrawlerProgram\CrawlerProgram.csproj", "{14D5D109-FD3A-4B13-AF64-330A80E41F35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,18 +22,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Debug|x64.Build.0 = Debug|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Debug|x86.Build.0 = Debug|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Release|x64.ActiveCfg = Release|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Release|x64.Build.0 = Release|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Release|x86.ActiveCfg = Release|Any CPU
-		{D76A27A9-A126-48AB-9E0D-93A8EDCE2862}.Release|x86.Build.0 = Release|Any CPU
 		{C4A328EF-76A8-4C9B-A016-76C7C608406F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4A328EF-76A8-4C9B-A016-76C7C608406F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A328EF-76A8-4C9B-A016-76C7C608406F}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -58,5 +46,17 @@ Global
 		{DA9AE9CD-1729-4E3B-890C-93BE7563E6AE}.Release|x64.Build.0 = Release|Any CPU
 		{DA9AE9CD-1729-4E3B-890C-93BE7563E6AE}.Release|x86.ActiveCfg = Release|Any CPU
 		{DA9AE9CD-1729-4E3B-890C-93BE7563E6AE}.Release|x86.Build.0 = Release|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Debug|x64.Build.0 = Debug|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Debug|x86.Build.0 = Debug|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Release|x64.ActiveCfg = Release|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Release|x64.Build.0 = Release|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Release|x86.ActiveCfg = Release|Any CPU
+		{14D5D109-FD3A-4B13-AF64-330A80E41F35}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
